@@ -77,7 +77,7 @@
         cardButton.selected = card.isFaceUp;
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha =  card.isUnplayable ? 0.3 : 1.0;
-                
+        
         //  Toggle card background image
         if (cardButton.selected) {
             [cardButton setBackgroundImage:[UIImage imageNamed:@"whiteBackground.png"] forState:UIControlStateNormal];
@@ -86,7 +86,7 @@
         }
     }
     
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    //self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.resultsLabel.textColor = [UIColor blackColor];
     self.resultsLabel.text = self.game.resultsString;
     
@@ -104,6 +104,8 @@
     _flipsCount = flipsCount;
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipsCount];
     
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    
     //  Update the Game Result
     self.gameResult.score = self.game.score; 
 }
@@ -112,8 +114,12 @@
 {
     self.cardMatchingModeSwitch.enabled = NO;
     
-    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
-
+    if ([self.tabBarItem.title isEqualToString:@"Match"]) {
+        [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    }else{
+        [self.game setCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    }
+    
     self.flipsCount++;
     
     [self updateUI];

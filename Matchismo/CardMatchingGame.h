@@ -16,6 +16,7 @@
 - (id)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck cardMatchMode:(NSUInteger)mode;
 
 - (void)flipCardAtIndex:(NSUInteger)index;
+- (void)setCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 @property (nonatomic, readonly) int score;

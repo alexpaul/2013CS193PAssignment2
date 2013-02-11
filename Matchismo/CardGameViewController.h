@@ -10,4 +10,8 @@
 
 @interface CardGameViewController : UIViewController
 
+//  Public Methods so SetGameViewController can subclass
+- (void)updateUI;
+
+
 @end

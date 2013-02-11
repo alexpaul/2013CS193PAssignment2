@@ -8,6 +8,7 @@
 
 #import "CardMatchingGame.h"
 #import "PlayingCard.h"
+#import "SetCard.h"
 
 @interface CardMatchingGame()
 @property (readwrite, nonatomic) int score;
@@ -155,6 +156,55 @@
                 
         if (card.faceUp && !card.isUnplayable) {
             NSLog(@"inside hold for matching."); 
+            [self.holdCardsForMatching addObject:card];
+            self.flipsRemaining--;
+        }
+    }
+}
+
+- (void)setCardAtIndex:(NSUInteger)index
+{
+    
+    SetCard *card = (SetCard *)[self cardAtIndex:index];
+    
+    NSLog(@"flips remaining %d", self.flipsRemaining);
+    
+    if (card && !card.isUnplayable) {
+        if (!card.isFaceUp) {
+            for (Card *otherCard in self.cards) {
+                if (otherCard.isFaceUp && !otherCard.isUnplayable && (self.flipsRemaining == 1)) {
+                    self.flipsRemaining = self.cardMatchMode;                    
+                    int matchScore = [card match:[NSArray arrayWithArray:self.holdCardsForMatching]];
+                    
+                    if (matchScore) {
+                        card.unPlayable = YES;
+                        
+                        // Mark all the other cards in the holdCardsForMatching array unplayable since a match was found
+                        for (Card *otherCards in self.holdCardsForMatching) {
+                            otherCards.unPlayable = YES;
+                        }
+                        
+                        self.score += matchScore * MATCH_BONUS;
+                        
+                    }else{
+                        for (Card *otherCard in self.holdCardsForMatching) {
+                            otherCard.faceUp = NO;
+                        }
+                        
+                        self.score -= MISMATCH_PENALTY;
+                    }
+                    [self.holdCardsForMatching removeAllObjects];
+                    break;
+                }
+                self.resultsString = [NSString stringWithFormat:@"Flipped up %@", card.contents];
+            }
+            self.score -= FLIP_COST;
+        }
+        card.faceUp = !card.isFaceUp;
+        
+        
+        if (card.faceUp && !card.isUnplayable) {
+            NSLog(@"inside hold for matching.");
             [self.holdCardsForMatching addObject:card];
             self.flipsRemaining--;
         }
