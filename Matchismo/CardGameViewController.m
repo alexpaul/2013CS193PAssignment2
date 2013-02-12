@@ -11,6 +11,7 @@
 #import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
 #import "GameResults.h"
+#import "SettingsViewController.h"
 
 @interface CardGameViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *cardMatchingModeSwitch;
 @property (weak, nonatomic) IBOutlet UISlider *historySlider;
 @property (nonatomic) int cardMatchMode;
+@property (nonatomic, strong) SettingsViewController *settings; 
 
 //  Game Results
 @property (nonatomic, strong) GameResults *gameResult; 
@@ -36,12 +38,20 @@
 {
     [super viewWillAppear:YES];
     
-    self.cardMatchingModeSwitch.on = NO;
-    
+    //self.cardMatchingModeSwitch.on = NO;
+        
     self.historySlider.minimumValue = 0;
     self.historySlider.continuous = YES; 
     
     self.flipsHistoryArray = [[NSMutableArray alloc] init];
+}
+
+- (SettingsViewController *)settings
+{
+    if (!_settings) {
+        _settings = [[SettingsViewController alloc] init];
+    }
+    return _settings; 
 }
 
 - (GameResults *)gameResult
@@ -55,6 +65,7 @@
 - (CardMatchingGame *)game
 {
     self.cardMatchMode = (self.cardMatchingModeSwitch.on) ? 3 : 2;
+    //self.cardMatchMode = (self.settings.gameModeSwitch.on) ? 3 : 2;
     
     if (!_game) {
         _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count] usingDeck:[[PlayingCardDeck alloc] init] cardMatchMode:self.cardMatchMode];
@@ -85,8 +96,7 @@
             [cardButton setBackgroundImage:[UIImage imageNamed:@"cardBack.png"] forState:UIControlStateNormal];
         }
     }
-    
-    //self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+        
     self.resultsLabel.textColor = [UIColor blackColor];
     self.resultsLabel.text = self.game.resultsString;
     
@@ -112,7 +122,7 @@
 
 - (IBAction)flipCard:(UIButton *)sender
 {
-    self.cardMatchingModeSwitch.enabled = NO;
+    //self.cardMatchingModeSwitch.enabled = NO;
     
     if ([self.tabBarItem.title isEqualToString:@"Match"]) {
         [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
@@ -127,12 +137,12 @@
 
 - (IBAction)dealNewDeck:(UIButton *)sender
 {
-    self.cardMatchingModeSwitch.enabled = YES;
+    //self.cardMatchingModeSwitch.enabled = YES;
+    
+    //self.cardMatchMode = (self.settings.gameModeSwitch.on) ? 3 : 2;
         
     NSLog(@"card match mode is %d", self.cardMatchMode);
-    
-    //self.game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count] usingDeck:[[PlayingCardDeck alloc] init] cardMatchMode:self.cardMatchMode];
-    
+        
     self.game = nil;
     
     self.gameResult = nil; 
@@ -162,9 +172,7 @@
     NSLog(@"slider maximum value is %f", self.historySlider.maximumValue);
     
     NSLog(@"slider value is %f", sender.value);
-    
-    //int maxLength = (int)sender.maximumValue;
-    
+        
     if ([self.flipsHistoryArray count] != 0 && (sender.value != sender.maximumValue)) {
         self.resultsLabel.textColor = [UIColor lightGrayColor];
         self.resultsLabel.text = self.flipsHistoryArray[(int)sender.value];

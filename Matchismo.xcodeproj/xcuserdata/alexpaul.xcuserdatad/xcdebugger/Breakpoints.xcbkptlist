@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Matchismo/CardGameViewController.m"
-         timestampString = "382239078.935405"
+         timestampString = "382363930.312594"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "74"
-         endingLineNumber = "74"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
          landmarkName = "-updateUI"
          landmarkType = "5">
       </FileBreakpoint>
