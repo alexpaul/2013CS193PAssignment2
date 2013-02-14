@@ -117,7 +117,8 @@
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     
     //  Update the Game Result
-    self.gameResult.score = self.game.score; 
+    self.gameResult.score = self.game.score;
+    self.gameResult.gamePlayed = self.tabBarItem.title; 
 }
 
 - (IBAction)flipCard:(UIButton *)sender

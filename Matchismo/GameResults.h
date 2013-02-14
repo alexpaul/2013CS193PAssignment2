@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) NSDate *end;
 @property (nonatomic, readonly) NSTimeInterval duration; 
 @property (nonatomic) int score;
+@property (nonatomic, strong) NSString *gamePlayed; 
 
 +(NSArray *)allGameResults; // of GameResults
 

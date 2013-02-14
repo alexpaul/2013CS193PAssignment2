@@ -29,7 +29,9 @@
 		575D478E16CA62A4003102B8 /* cardBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 575D478D16CA62A3003102B8 /* cardBack.png */; };
 		575D479116CA62BE003102B8 /* whiteBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 575D479016CA62BE003102B8 /* whiteBackground.png */; };
 		575D479416CA64C3003102B8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 575D479316CA64C3003102B8 /* SettingsViewController.m */; };
-		575D479616CA702C003102B8 /* set.png in Resources */ = {isa = PBXBuildFile; fileRef = 575D479516CA702C003102B8 /* set.png */; };
+		575D47A816CADBCE003102B8 /* setTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 575D47A716CADBCE003102B8 /* setTab.png */; };
+		575D47B016CADE63003102B8 /* settingsTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 575D47AF16CADE63003102B8 /* settingsTabIcon.png */; };
+		575D47B416CAEA80003102B8 /* scoreTabBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 575D47B316CAEA80003102B8 /* scoreTabBarIcon.png */; };
 		575FB3B116C6EAF600456438 /* SetGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 575FB3B016C6EAF600456438 /* SetGameViewController.m */; };
 		575FB3B416C6EF6400456438 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 575FB3B316C6EF6400456438 /* SetCard.m */; };
 		575FB3BB16C6F3AC00456438 /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 575FB3BA16C6F3AC00456438 /* SetCardDeck.m */; };
@@ -71,7 +73,9 @@
 		575D479016CA62BE003102B8 /* whiteBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteBackground.png; sourceTree = "<group>"; };
 		575D479216CA64C2003102B8 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		575D479316CA64C3003102B8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		575D479516CA702C003102B8 /* set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set.png; sourceTree = "<group>"; };
+		575D47A716CADBCE003102B8 /* setTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setTab.png; path = ../setTab.png; sourceTree = "<group>"; };
+		575D47AF16CADE63003102B8 /* settingsTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settingsTabIcon.png; path = ../settingsTabIcon.png; sourceTree = "<group>"; };
+		575D47B316CAEA80003102B8 /* scoreTabBarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoreTabBarIcon.png; sourceTree = "<group>"; };
 		575FB3AF16C6EAF600456438 /* SetGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetGameViewController.h; sourceTree = "<group>"; };
 		575FB3B016C6EAF600456438 /* SetGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetGameViewController.m; sourceTree = "<group>"; };
 		575FB3B216C6EF6400456438 /* SetCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCard.h; path = Model/SetCard.h; sourceTree = "<group>"; };
@@ -147,7 +151,9 @@
 		571A456F16B2FDAE00344D97 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				575D479516CA702C003102B8 /* set.png */,
+				575D47B316CAEA80003102B8 /* scoreTabBarIcon.png */,
+				575D47AF16CADE63003102B8 /* settingsTabIcon.png */,
+				575D47A716CADBCE003102B8 /* setTab.png */,
 				575D479016CA62BE003102B8 /* whiteBackground.png */,
 				575D478D16CA62A3003102B8 /* cardBack.png */,
 				570F0C4716C5545E008C2F4F /* cardTabImage.png */,
@@ -246,7 +252,9 @@
 				570F0C4816C5545E008C2F4F /* cardTabImage.png in Resources */,
 				575D478E16CA62A4003102B8 /* cardBack.png in Resources */,
 				575D479116CA62BE003102B8 /* whiteBackground.png in Resources */,
-				575D479616CA702C003102B8 /* set.png in Resources */,
+				575D47A816CADBCE003102B8 /* setTab.png in Resources */,
+				575D47B016CADE63003102B8 /* settingsTabIcon.png in Resources */,
+				575D47B416CAEA80003102B8 /* scoreTabBarIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

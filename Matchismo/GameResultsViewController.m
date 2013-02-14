@@ -11,6 +11,7 @@
 
 @interface GameResultsViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *display;
+@property (strong, nonatomic) NSMutableArray *sortResultsArray; 
 
 @end
 
@@ -23,11 +24,24 @@
     return self;
 }
 
+- (NSMutableArray *)sortResultsArray
+{
+    if (!_sortResultsArray) {
+        _sortResultsArray = [[NSMutableArray alloc] init];
+    }
+    return _sortResultsArray; 
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     
     [self setup]; 
+}
+
+- (void)setup
+{
+    // Initialization that can't wait until viewDidLoad
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -39,16 +53,55 @@
 
 - (void)updateUI
 {
-    NSString *displayText = @"";
-    for (GameResults *result in [GameResults allGameResults]) {
-        displayText = [displayText stringByAppendingFormat:@"Score: %d, (%@, %0g) \n", result.score, result.end, round(result.duration)];
-    }
-    self.display.text = displayText; 
+    //  Save a mutable copy of the Game Results array
+    [self.sortResultsArray addObjectsFromArray:[GameResults allGameResults]];
+    
+    //  Format and Display Game Results
+    [self formatGameResutls]; 
 }
 
-- (void)setup
+- (IBAction)sortButtonPressed:(UIButton *)sender
 {
-    // Initialization that can't wait until viewDidLoad
+    switch (sender.tag) {
+        case 1:
+            [self createDescriptor:@"end"];
+            break;
+        case 2:
+            [self createDescriptor:@"score"];
+            break;
+        case 3:
+            [self createDescriptor:@"duration"];
+            break;
+        case 4:
+            [self createDescriptor:@"gamePlayed"];
+            break;
+        default:
+            break;
+    }
+    [self formatGameResutls];
+}
+
+- (void)createDescriptor:(NSString *)key
+{
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:key ascending:NO];
+    NSArray *sortDescriptors = @[descriptor];
+    [self.sortResultsArray sortUsingDescriptors:sortDescriptors];
+}
+
+- (void)formatGameResutls
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+    
+    NSString *displayText = @"";
+    for (GameResults *result in self.sortResultsArray) {
+        displayText = [displayText
+                       stringByAppendingFormat:@"%@ Score: %d, (%@, %0g)\n", result.gamePlayed, result.score,
+                       [dateFormatter stringFromDate:result.end], round(result.duration)];
+    }
+    
+    self.display.text = displayText;
 }
 
 @end

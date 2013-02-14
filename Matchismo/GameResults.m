@@ -19,6 +19,7 @@
 #define END_KEY @"EndDate"
 #define SCORE_KEY @"ScoreKey"
 #define ALL_RESULTS_KEY @"GameResult_All"
+#define GAME_PLAYED @"Game_Played"
 
 + (NSArray *)allGameResults
 {
@@ -38,6 +39,7 @@
         _start = [pList objectForKey:START_KEY];
         _end = [pList objectForKey:END_KEY];
         _score = [[pList objectForKey:SCORE_KEY] intValue];
+        _gamePlayed = [pList objectForKey:GAME_PLAYED];
         if (!_start || !_end) self = nil; 
     }
     return self;
@@ -69,12 +71,20 @@
 
 - (id)asPropertyList
 {
-    return @{START_KEY : self.start, END_KEY : self.end, SCORE_KEY : @(self.score)};
+    return @{START_KEY : self.start, END_KEY : self.end, SCORE_KEY : @(self.score), GAME_PLAYED : self.gamePlayed};
 }
 
 - (NSTimeInterval)duration
 {
     return [self.end timeIntervalSinceDate:self.start];
+}
+
+- (NSString *)gamePlayed
+{
+    if (!_gamePlayed) {
+        _gamePlayed = [[NSString alloc] init];
+    }
+    return _gamePlayed; 
 }
 
 - (void)setScore:(int)score

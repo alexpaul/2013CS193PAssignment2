@@ -94,20 +94,7 @@
         }
         
         [cardButton setAttributedTitle:mat forState:UIControlStateNormal];
-        
-        
-        //[cardButton setTitle:card.symbol forState:UIControlStateSelected];
-        //[cardButton setTitle:card.symbol forState:UIControlStateSelected | UIControlStateDisabled];
-        
-        //[cardButton setTitle:displaySymbol forState:UIControlStateNormal];
-        
-        //NSLog(@"card contents is %@", card.contents);
-        
     }
-    /*
-     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-     self.resultsLabel.textColor = [UIColor blackColor];
-     self.resultsLabel.text = self.game.resultsString;*/
 }
 
 - (void)awakeFromNib
